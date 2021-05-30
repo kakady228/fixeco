@@ -26,13 +26,13 @@
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0 mr-0 ml-auto">
                 <li class="nav-tem">
-                    <a href="" class="nav-link">Ремонт авто</a>
+                    <router-link to="/" class="nav-link">Ремонт авто</router-link>
                 </li>
                 <li class="nav-tem">
-                    <a href="" class="nav-link">Отзывы</a>
+                    <router-link to="/" class="nav-link">Отзывы</router-link>
                 </li>
                 <li class="nav-tem">
-                    <a href="" class="nav-link">Войти</a>
+                    <router-link to="/login" class="nav-link">Войти</router-link>
                 </li>
             </ul>
           </div>

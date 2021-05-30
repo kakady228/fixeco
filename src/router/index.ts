@@ -21,6 +21,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/selection-form',
     name: 'selection-form',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/registration',
+    name: 'registration-form',
+    component: () => import('../components/RegistrationForm.vue')
+  },
+  {
+    path: '/login',
+    name: 'login-form',
+    component: () => import('../components/LoginForm.vue')
   }
 ]
 

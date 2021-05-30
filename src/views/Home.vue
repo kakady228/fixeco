@@ -7,7 +7,7 @@
                 <h1 class="col-12 text-uppercase font-58">Phasellus Vitae Gravida</h1>
                 <div class="input-group mb-3 h-55px mt-3">
                     <input type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <router-link to="selection-form" class="btn btn-secondary col-3" type="button" id="button-addon2">Создать заявку</router-link>
+                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2">Создать заявку</router-link>
                 </div>
                 <button class="col-3 btn call-me__btn mt-3">Перезвоните мне</button>
             </div>
@@ -79,7 +79,7 @@
 
             <div class="why-us col-12 d-flex justify-content-center">
                 <div class="wu-left col-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare egestas nisl, nec scelerisque nulla fringilla ac. Mauris ut ante eget orci volutpat volutpat. Cras eu convallis lectus, laoreet congue odio. Phasellus sit amet auctor metus. Duis tincidunt neque a felis malesuada dignissim. Praesent nec tortor tempus elit dignissim mattis. </p>
+                    <p class="font-20">Онлайн приложение «FixEco» создана с целью облегчения поиска автосервиса, и последующего ремонта вашего автомобиля. Наш веб-сайт предоставляет удобный, дружественный для пользователя интерфейс. Так же веб-сайт является полностью адаптивным, то есть, пользователь может зайти как со стационарного компьютера, так и с мобильных устройств. </p>
                 </div>
 
                 <div class="wu-right col-4 p-2 d-flex flex-column justify-content-around text-start">
@@ -143,11 +143,11 @@
     </div>
 
 
-    <div class="container-fluid application-image mb-5 position-relative">
+    <div class="container-fluid application-image position-relative">
         <div class="row col-9 d-flex position-absolute top-50 start-50 translate-middle">
             <div class="text-white text-center">
                 <h3 class="col-12 font-42 text-uppercase">Оставьте заявку и сэкономьте на ремонте</h3>
-                <h1 class="col-12 font-24 text-uppercase font-60">Создание заяваки абсолютно бесплатно и займет у вас не более 5 минут</h1>
+                <h1 class="col-12 font-24 text-uppercase font-60">Создание заявки абсолютно бесплатно и займет у вас не более 5 минут</h1>
                 <div class="input-group mb-3 h-55px mt-5">
                     <input type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-secondary col-3" type="button" id="button-addon2">Создать заявку</button>
@@ -157,7 +157,7 @@
         </div>
     </div>
 
-</template>
+</template> 
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
@@ -173,8 +173,12 @@ export default class Home extends Vue {
 
 <style scoped>
 
-html, body {
+    html, body {
         font-family: 'Archivo', sans-serif;
+    }
+    
+    body {
+        background-color: #fff !important;
     }
 
     .intro-image {
@@ -237,9 +241,10 @@ html, body {
     }
 
     .wu-left p {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 400;
         text-indent: 30px;
+        text-align: left;
     }
 
     .review-item {
@@ -290,6 +295,10 @@ html, body {
         border: 1px solid #000;
         background: #B64708;
         color: #fff;
+    }
+
+    .lh-55px {
+        line-height: 40px;
     }
 
 </style>
