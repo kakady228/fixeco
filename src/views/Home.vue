@@ -3,11 +3,11 @@
   <div class="container-fluid intro-image">
         <div class="row d-flex justify-content-center">
             <div class="col-7 position-absolute top-50 start-50 translate-middle text-white text-center">
-                <h3 class="col-12 font-32">Aliquam in lorem quis tortor pretium molestie non sed.</h3>
-                <h1 class="col-12 text-uppercase font-58">Phasellus Vitae Gravida</h1>
+                <h3 class="col-12 font-32">Десятки автосервисов по всему городу</h3>
+                <h1 class="col-12 text-uppercase font-58">Найдите лучший сервис</h1>
                 <div class="input-group mb-3 h-55px mt-3">
-                    <input type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2">Создать заявку</router-link>
+                    <input v-model="introInput" type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
                 </div>
                 <button class="col-3 btn call-me__btn mt-3">Перезвоните мне</button>
             </div>
@@ -167,7 +167,15 @@ import { Options, Vue } from 'vue-class-component';
   },
 })
 export default class Home extends Vue {
+    introInput: string = '';
 
+    sendIntroInput() {
+        localStorage.setItem('introInput', this.introInput);
+    }
+
+    created() {
+        localStorage.removeItem('introInput');
+    }
 }
 </script>
 
@@ -196,7 +204,7 @@ export default class Home extends Vue {
     }
 
     .font-58 {
-        font-size: 58px;
+        font-size: 50px;
         font-weight: 700;
     }
 

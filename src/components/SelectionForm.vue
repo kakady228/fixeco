@@ -103,6 +103,8 @@ export default class Selection extends Vue {
 
     created() {
 
+        this.crashDescription = localStorage.getItem('introInput')!.toString();
+
         
         fetch('http://podbor-api/model/read.php')
             .then(response => response.json())

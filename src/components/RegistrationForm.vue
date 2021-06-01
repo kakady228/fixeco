@@ -5,22 +5,73 @@
 				Регистрация
 			</div>
 			<div class="reg-form-wrapper">
-				<input id="email" class="reg-form-input" type="email" name="email" placeholder="sample@mail.com">
-				<input id="pass" class="reg-form-input" type="password" name="pass" placeholder="******">
-				<input class="reg-form-input" type="password" name="confirmPassword" placeholder="******">
-				<button class="btn reg-form-button" type="submit">Зарегистрироваться</button>
+
+				<input v-model="email" id="email" class="reg-form-input" type="email" name="email" placeholder="sample@mail.com">
+
+				<input v-model="name" id="name" class="reg-form-input" type="text" name="name" placeholder="Иванов Иван Иванович">
+
+				<input v-model="password" id="pass" class="reg-form-input" type="password" name="pass" placeholder="******">
+				<input v-model="confirmPassword" class="reg-form-input" type="password" name="confirmPassword" placeholder="******">
+
+				<select v-model="accountType" class="reg-form-input w-75 mx-auto">
+					<option selected>Укажите тип учетной записи</option>
+					<option value="Client">Клиент</option>
+					<option value="AutoService">Автосервис</option>
+				</select>
+				<button class="btn reg-form-button" type="submit" @click="sendRegistrationData">Зарегистрироваться</button>
 			</div>
 		</form>
 	</div>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import registrationData from '@/Models/registrationData';
 
 @Options({
   components: {
   },
 })
 export default class RegistrationForm extends Vue {
+	
+	email: string = '';
+	name: string = '';
+	password: string = '';
+	confirmPassword: string = '';
+	accountType: string = 'Укажите тип учетной записи';
+
+	registrationData: registrationData[] = [];
+
+
+	async sendRegistrationData() {
+
+        this.registrationData = [{
+            email: this.email, 
+            name: this.name,
+            password: this.password,
+            accountType: this.accountType
+        }];
+
+		if(this.password === this.confirmPassword) {
+
+			const url = 'http://podbor-api/users/create.php';
+			const data = this.registrationData;
+			const response = await fetch(url, {
+				method: 'POST', // или 'PUT'
+				body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+				headers: {
+				'Content-Type': 'application/json'
+				}
+			});
+			const json = await response.json();
+			
+
+		} else {
+			alert('Пароли не совпадают!');
+		}
+		console.log('asdasdasdas');
+		
+		this.$router.push('http://localhost:8080/login');        
+    }
 
 }
 </script>

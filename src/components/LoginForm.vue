@@ -5,9 +5,9 @@
 				Авторизация
 			</div>
 			<div class="reg-form-wrapper">
-				<input id="email" class="reg-form-input" type="email" name="email" placeholder="sample@mail.com">
-				<input id="pass" class="reg-form-input" type="password" name="pass" placeholder="******">
-				<button class="btn btn-r reg-form-button" type="submit">Войти</button>
+				<input v-model="email" id="email" class="reg-form-input" type="email" name="email" placeholder="sample@mail.com">
+				<input v-model="password" id="pass" class="reg-form-input" type="password" name="pass" placeholder="******">
+				<button class="btn btn-r reg-form-button" type="submit" @click="sendLoginData">Войти</button>
 			</div>
 			<p class="reg-form-subtitle">
 				<router-link to="/registration">Зарегистрироваться?</router-link>
@@ -17,12 +17,62 @@
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import loginData from '@/Models/loginData';
 
 @Options({
   components: {
   },
 })
 export default class LoginForm extends Vue {
+	
+	email: string = '';
+	password: string = '';
+	user: any;
+	response: any;
+
+	loginData: loginData[] = [];
+
+
+	async sendLoginData() {
+
+        this.loginData = [{
+            email: this.email, 
+            password: this.password
+        }];
+
+		const url = 'http://podbor-api/users/read.php';
+		const data = this.loginData;
+		const response = await fetch(url, {
+			method: 'POST', // или 'PUT'
+			body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+			headers: {
+			'Content-Type': 'application/json'
+			}
+		})
+		.then(response => response.json()) 
+		.then(json => {
+			this.user = json.data[0];			
+			console.log(this.user);
+			
+		})
+
+		
+
+		if (this.user) {
+			let name = 'name';
+			let value = this.user.name;
+			let nameId = 'id';
+			let id = this.user.id;
+			let date = new Date(Date.now() + 3600e3)
+			let UTCStringdate = date.toUTCString();
+
+			document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=" + UTCStringdate;
+			document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=" + UTCStringdate;
+
+			this.$router.push('http://localhost:8080/');
+		}
+
+    }
 
 }
 </script>

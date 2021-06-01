@@ -31,8 +31,11 @@
                 <li class="nav-tem">
                     <router-link to="/" class="nav-link">Отзывы</router-link>
                 </li>
-                <li class="nav-tem">
+                <li v-if="!user.name" class="nav-tem">
                     <router-link to="/login" class="nav-link">Войти</router-link>
+                </li>
+                <li v-else class="nav-tem">
+                    <button @click="logout" class="btn btn-link">Выйти</button>
                 </li>
             </ul>
           </div>
@@ -44,10 +47,56 @@
 import { Options, Vue } from 'vue-class-component';
 
 @Options({})
-export default class NavMenu extends Vue {}
+export default class NavMenu extends Vue {
+
+  user: any = {
+    id: '',
+    name: '',
+  };
+
+  mounted() {
+    // console.log('NavMenu', this.user);
+    
+    setInterval(() => {
+
+      // console.log('NavMenu', document.cookie);
+
+      let userName = document.cookie.match('(^|;) ?' + 'name' + '=([^;]*)(;|$)');
+      let userId = document.cookie.match('(^|;) ?' + 'id' + '=([^;]*)(;|$)');
+
+      if(userId) {
+          this.user = {
+          id: userId![2],
+          name: userName![2]
+        }
+      }
+      
+      
+    }, 5000);
+    
+  }
+
+  logout() {
+    let name = 'name';
+    let value = this.user.name;
+    let nameId = 'id';
+    let id = this.user.id;
+
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=-1";
+    document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=-1";
+
+    window.location.reload();
+  }
+
+}
 </script>
 
 <style>
 
+.btn-link {
+    font-weight: 400;
+    color: rgba(0,0,0,.55);
+    text-decoration: none;
+}
 
 </style>
