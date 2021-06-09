@@ -81,10 +81,6 @@ export default class Selection extends Vue {
     years: Year[] = [];
     models: SelectionModel[] = [];
     modelsList: SelectionModel[] = [];
-
-    serviceList: any;
-
-    array123: any[] = [];
     
     currentMark: number = 0;
     currentModel: number = 0;
@@ -132,17 +128,10 @@ export default class Selection extends Vue {
             
             })
 
-        fetch('http://podbor-api/services/read.php')
-            .then(response => response.json())
-            .then(json => {
-            this.serviceList = json.data;
-            console.log('serviceList: ', this.serviceList)
-            
-            })
 
         const { coords } = useGeolocation();
 
-        // console.log("COORDS", coords);
+        console.log("COORDS", coords);
         
         
         const currPos = computed(() => ({
@@ -150,7 +139,7 @@ export default class Selection extends Vue {
             lng: coords.value.longitude,
         }));
 
-        // console.log('currPos: ', currPos);
+        console.log('currPos: ', currPos);
 
         onMounted(async () => {
         
@@ -167,36 +156,65 @@ export default class Selection extends Vue {
                 });
 
                 
-
+                var coordinates = {lat: 56.8703515, lng: 53.1751202};
+                var goodAutoCoords = {lat: 56.87103881526579, lng: 53.192616399510186};
+                var castrolServiceCoords = {lat: 56.82480855872474, lng: 53.20691362307319};
                 
                 var currentMarker = '1';
 
-                var array123 = this.array123;
-
                 // Marker 1
-                for (let i = 0; i < this.serviceList.length; i++) {
-                    const element = this.serviceList[i];
-                    const elementName = this.serviceList[i].name;
+                var marker1 = new google.maps.Marker({
+                    position: coordinates,
+                    map: map,
+                    animation: google.maps.Animation.DROP ,
+                    title: 'Заголовок'
+                });
+                marker1.addListener('click', function () {
+                    marker1.info.open(map, marker1);
+                    currentMarker = '0';
+                    localStorage.setItem("currentMarker", currentMarker);
+                });
+                marker1.info = new google.maps.InfoWindow({
+                    content: 'Add some info here Marker 1',
+                });
+                // End Marker 1
 
-                    var coordinates = {lat: Number(element.map_lat), lng: Number(element.map_long)};
+                // goodAutoMarker 
+                var goodAutoMarker = new google.maps.Marker({
+                    position: goodAutoCoords,
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    title: 'Заголовок1'
+                });
+                goodAutoMarker.addListener('click', function () {
+                    goodAutoMarker.info.open(map, goodAutoMarker);
+                    currentMarker = '1';
+                    localStorage.setItem("currentMarker", currentMarker);
+                });
+                goodAutoMarker.info = new google.maps.InfoWindow({
+                    content: 'goodAutoMarker',
+                });
+                // End goodAutoMarker
 
-                    array123[i] = new google.maps.Marker({
-                        position: coordinates,
-                        map: map,
-                        animation: google.maps.Animation.DROP,
-                        title: elementName
-                    });
-                    array123[i].addListener('click', function () {
-                        array123[i].info.open(map, array123[i]);
-                        currentMarker = String(i+1);
-                        localStorage.setItem("currentMarker", currentMarker);
-                    });
-                    array123[i].info = new google.maps.InfoWindow({
-                        content: element.description,
-                    });
-                    // End Marker 1
-                }
+                // Marker 3
+                var castrolServiceMarker = new google.maps.Marker({
+                    position: castrolServiceCoords,
+                    map: map,
+                    animation: google.maps.Animation.DROP ,
+                    title: 'Заголовок2'
+                });
+                castrolServiceMarker.addListener('click', function () {
+                    castrolServiceMarker.info.open(map, castrolServiceMarker);
+                    currentMarker = '2';
+                    localStorage.setItem("currentMarker", currentMarker);
+                });
+                castrolServiceMarker.info = new google.maps.InfoWindow({
+                    content: 'castrolServiceMarker',
+                });
+                // End Marker 3
+
                 this.currPos = coords;
+                // console.log('Sadasdsadsadasdasd: ', this.currPos);
             }, 1000);
         })
     }
@@ -262,46 +280,6 @@ export default class Selection extends Vue {
 
             this.modelsList = (this.models.filter(i => i.mark_id == 19));
             this.currentMark = 19;
-            emitter.emit('modelsEvent', this.modelsList);
-
-        }
-
-        else if (this.currentOption === '20') {
-
-            this.modelsList = (this.models.filter(i => i.mark_id == 20));
-            this.currentMark = 20;
-            emitter.emit('modelsEvent', this.modelsList);
-
-        }
-
-        else if (this.currentOption === '21') {
-
-            this.modelsList = (this.models.filter(i => i.mark_id == 21));
-            this.currentMark = 21;
-            emitter.emit('modelsEvent', this.modelsList);
-
-        }
-
-        else if (this.currentOption === '22') {
-
-            this.modelsList = (this.models.filter(i => i.mark_id == 22));
-            this.currentMark = 22;
-            emitter.emit('modelsEvent', this.modelsList);
-
-        }
-
-        else if (this.currentOption === '23') {
-
-            this.modelsList = (this.models.filter(i => i.mark_id == 23));
-            this.currentMark = 23;
-            emitter.emit('modelsEvent', this.modelsList);
-
-        }
-
-        else if (this.currentOption === '24') {
-
-            this.modelsList = (this.models.filter(i => i.mark_id == 24));
-            this.currentMark = 24;
             emitter.emit('modelsEvent', this.modelsList);
 
         }

@@ -24,9 +24,18 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.11",
+    "dateformat": "^4.5.1",
     "typescript": "~4.1.5",
     "vue-browser-geolocation": "^1.8.0",
     "vue-cookie": "^1.1.4",
     "vue3-google-map": "^0.7.10"
+  },
+  "eslint": {
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+      "vueFeatures": {
+        "filter": true
+      }
+    }
   }
 }

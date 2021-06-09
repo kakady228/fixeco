@@ -11,19 +11,19 @@
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>Company name
+                FixEco
             </h6>
             <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum
-                dolor sit amet, consectetur adipisicing elit.
+                Приложение, помогающее простым пользователям, в выборе качественного автосервиса для
+                их их автомобилей.
             </p>
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4"> -->
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
+            <!-- <h6 class="text-uppercase fw-bold mb-4">
                 Products
             </h6>
             <p>
@@ -32,32 +32,20 @@
             <p>
                 <a href="#!" class="text-reset">React</a>
             </p>
-            <p>
-                <a href="#!" class="text-reset">Vue</a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Laravel</a>
-            </p>
-            </div>
+            </div> -->
             <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">
-                Useful links
+                Навигация по сайту
             </h6>
             <p>
-                <a href="#!" class="text-reset">Pricing</a>
+                <a href="#!" class="text-reset">Ремонт авто</a>
             </p>
             <p>
-                <a href="#!" class="text-reset">Settings</a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Orders</a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Help</a>
+                <a href="#!" class="text-reset">Отзывы</a>
             </p>
             </div>
             <!-- Grid column -->
@@ -66,15 +54,10 @@
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">
-                Contact
+                Контакты
             </h6>
-            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-            <p>
-                <i class="fas fa-envelope me-3"></i>
-                info@example.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+            <p>+7 (996) 693-11-01</p>
+            <p>+7 (996) 693-11-01</p>
             </div>
             <!-- Grid column -->
         </div>

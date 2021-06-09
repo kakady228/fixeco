@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light shadow">
         <div class="container-fluid d-flex">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <router-link to="/" class="navbar-brand align-middle" href="#"><img src="../assets/gear.svg" alt="Logo">FixEco</router-link>
+          <router-link to="/" class="navbar-brand rectangle-nav align-middle lh-sm" href="#"><img src="../assets/free-icon-cogwheel.png" alt="Logo" class="me-2">FixEco</router-link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,7 +29,7 @@
                     <router-link to="/" class="nav-link">Ремонт авто</router-link>
                 </li>
                 <li class="nav-tem">
-                    <router-link to="/" class="nav-link">Отзывы</router-link>
+                    <router-link to="/reviews" class="nav-link">Отзывы</router-link>
                 </li>
                 <li v-if="!user.name" class="nav-tem">
                     <router-link to="/login" class="nav-link">Войти</router-link>
@@ -69,6 +69,7 @@ export default class NavMenu extends Vue {
           id: userId![2],
           name: userName![2]
         }
+      localStorage.setItem('userId', userId![2]);
       }
       
       

@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="col-12 text-center my-5">
-                    <button type="button" class="btn show_all_reviews">Посмотреть все отзывы</button>
+                    <router-link to="/reviews#h1" type="button" class="btn show_all_reviews">Посмотреть все отзывы</router-link>
                 </div>
 
             </div>
@@ -149,8 +149,8 @@
                 <h3 class="col-12 font-42 text-uppercase">Оставьте заявку и сэкономьте на ремонте</h3>
                 <h1 class="col-12 font-24 text-uppercase font-60">Создание заявки абсолютно бесплатно и займет у вас не более 5 минут</h1>
                 <div class="input-group mb-3 h-55px mt-5">
-                    <input type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-secondary col-3" type="button" id="button-addon2">Создать заявку</button>
+                    <input v-model="introInput" type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
                 </div>
             </div>
             
