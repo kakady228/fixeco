@@ -315,13 +315,16 @@ export default class Selection extends Vue {
     async sendData() {
 
         var userId = localStorage.getItem('userId');
-        userId ? userId : 0;
+        
+        if (userId == undefined) {
+            userId = 'NULL';
+        }
     
         this.sendData1 = [{
             user_id: userId,
             break_description: this.crashDescription,
             mark_id: Number(this.currentMark), 
-            marker_id: Number(localStorage.getItem("currentMarker")),
+            service_id: Number(localStorage.getItem("currentMarker")),
             model_id: Number(this.currentModel),
             year_id: Number(this.currentYear)
         }];
@@ -335,7 +338,11 @@ export default class Selection extends Vue {
             'Content-Type': 'application/json'
             }
         });
-        const json = await response.json();        
+        const json = await response.json();
+        
+        alert('Заявку отправлена');
+        
+        this.$router.push('/');
     }
     
 

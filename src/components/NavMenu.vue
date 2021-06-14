@@ -31,11 +31,11 @@
                 <li class="nav-tem">
                     <router-link to="/reviews" class="nav-link">Отзывы</router-link>
                 </li>
-                <li v-if="!user.name" class="nav-tem">
+                <li v-if="!user.id" class="nav-tem">
                     <router-link to="/login" class="nav-link">Войти</router-link>
                 </li>
                 <li v-else class="nav-tem">
-                    <button @click="logout" class="btn btn-link">Выйти</button>
+                    <router-link to="/profile" class="btn btn-link"><img src="../assets/account_circle.svg" alt=""></router-link>
                 </li>
             </ul>
           </div>
@@ -66,10 +66,10 @@ export default class NavMenu extends Vue {
 
       if(userId) {
           this.user = {
-          id: userId![2],
-          name: userName![2]
+          id: this.$store.getters.USER.id,
+          name: this.$store.getters.USER.name
         }
-      localStorage.setItem('userId', userId![2]);
+      localStorage.setItem('userId', this.$store.getters.USER.id);
       }
       
       
@@ -85,6 +85,8 @@ export default class NavMenu extends Vue {
 
     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=-1";
     document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=-1";
+
+    window.localStorage.setItem('userId', 'undefined');
 
     window.location.reload();
   }

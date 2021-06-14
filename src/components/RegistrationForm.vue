@@ -70,7 +70,7 @@ export default class RegistrationForm extends Vue {
 		}
 		console.log('asdasdasdas');
 		
-		this.$router.push('http://localhost:8080/login');        
+		this.$router.push('https://fixeco.tk/login');        
     }
 
 }

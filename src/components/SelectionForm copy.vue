@@ -106,7 +106,7 @@ export default class Selection extends Vue {
         this.crashDescription = localStorage.getItem('introInput')!.toString();
 
         
-        fetch('http://podbor-api/model/read.php')
+        fetch('https://fixeco.tk/api/model/read.php')
             .then(response => response.json())
             .then(json => {
             this.models = json.data
@@ -114,14 +114,14 @@ export default class Selection extends Vue {
             })
             
 
-        fetch('http://podbor-api/product/read.php')
+        fetch('https://fixeco.tk/api/product/read.php')
             .then(response => response.json())
             .then(json => {
             this.marks = json.data
                 
             })
 
-        fetch('http://podbor-api/year/read.php')
+        fetch('https://fixeco.tk/api/year/read.php')
             .then(response => response.json())
             .then(json => {
             this.years = json.data
@@ -304,7 +304,7 @@ export default class Selection extends Vue {
             year_id: Number(this.currentYear)
         }];
 
-        const url = 'http://podbor-api/users_orders/create.php';
+        const url = 'https://fixeco.tk/api/users_orders/create.php';
         const data = this.sendData1;
         const response = await fetch(url, {
             method: 'POST',

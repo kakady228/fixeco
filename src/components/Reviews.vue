@@ -53,57 +53,41 @@
                         </div>
                         <div class="modal-body">
                             <form @submit.prevent class="text-start">
-                                <!-- <div class="mb-3 col-6">
-                                    <label for="recipient-name" class="col-form-label">Автосервис:</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="mb-3 col-6">
-                                    <label for="recipient-name" class="col-form-label">Стоимость ремонта:</label>
-                                    <input type="text" class="form-control">
-                                </div> -->
                                 <div class="mb-3 row">
                                     <div class="col">
                                         <label for="recipient-name" class="col-form-label">Автосервис:</label>
-                                        <input type="text" class="form-control">
+                                        <input v-model="serviceName" type="text" class="form-control">
                                     </div>
                                     <div class="col">
                                         <label for="recipient-name" class="col-form-label">Стоимость ремонта:</label>
-                                        <input type="text" class="form-control">
+                                        <input v-model="cost" type="text" class="form-control">
                                     </div>
                                 </div>
                                 
 
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Автомобиль:</label>
-                                    <input type="text" class="form-control">
+                                    <input v-model="car" type="text" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Текст отзыва:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea v-model="description" class="form-control" id="message-text"></textarea>
                                 </div>
-                                <!-- <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Оценка:</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Дата:</label>
-                                    <input type="text" class="form-control">
-                                </div> -->
                                 <div class="mb-3 row">
                                     <div class="col">
                                         <label for="recipient-name" class="col-form-label">Оценка:</label>
-                                    <input type="text" class="form-control">
+                                        <input v-model="rate" type="text" class="form-control">
                                     </div>
                                     <div class="col">
                                         <label for="recipient-name" class="col-form-label">Дата:</label>
-                                    <input type="text" class="form-control">
+                                        <input v-model="date" type="text" class="form-control">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                            <button type="button" class="btn review-button">Отправить отзыв</button>
+                            <button @click="sendData" type="button" class="btn review-button">Отправить отзыв</button>
                         </div>
                     </div>
                 </div>
@@ -123,6 +107,15 @@ var dateFormat = require("dateformat");
 export default class Reviews extends Vue {
     reviews: any[] = [];
     marks: SelectionModel[] = [];
+
+    sendData1: any[] = [];
+
+    serviceName: string = '';
+    cost: string = '';
+    car: string = '';
+    description: string = '';
+    rate: number = 0;
+    date: Date = new Date();
 
     reviewDate: any;
 
@@ -147,6 +140,33 @@ export default class Reviews extends Vue {
             reviewModalButton?.focus();
         })
         
+    }
+
+    async sendData() {
+    
+        this.sendData1 = [{
+            serviceName: this.serviceName,
+            cost: this.cost,
+            car: this.car, 
+            description: this.description,
+            rate: Number(this.rate),
+            date: this.date
+        }];
+
+        const url = 'http://podbor-api/reviews/create.php';
+        const data = this.sendData1;
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+        const json = await response.json();
+        
+        alert('Отзыв создан!');
+        
+        this.$router.push('/reviews');
     }
 }
 </script>

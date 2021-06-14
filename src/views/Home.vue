@@ -112,24 +112,14 @@
 
             <div class="reviews d-flex flex-wrap col-12 justify-content-center">
 
-                <div class="card w-25 mx-2">
+                <div class="card w-25 mx-2" :key="review.i" v-for="review in reviews">
                     <div class="card-body">
-                      <h5 class="card-title">Автосервис: service_name</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Стоимость ремонта: 500р</h6>
+                      <h5 class="card-title">Автосервис: {{ review.service_name }}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Стоимость ремонта: {{ review.cost }}</h6>
                       <hr>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p class="card-text">{{ review.description }}</p>
                       
-                      <p class="text-end">18 мая 2021 г</p>
-                    </div>
-                </div>
-
-                <div class="card w-25 mx-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Автосервис: service_name</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Стоимость ремонта: 500р</h6>
-                      <hr>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <p class="text-end">18 мая 2021 г</p>
+                      <p class="text-end">{{ review.date }}</p>
                     </div>
                 </div>
 
@@ -168,6 +158,7 @@ import { Options, Vue } from 'vue-class-component';
 })
 export default class Home extends Vue {
     introInput: string = '';
+    reviews: any[] = [];
 
     sendIntroInput() {
         localStorage.setItem('introInput', this.introInput);
@@ -175,6 +166,13 @@ export default class Home extends Vue {
 
     created() {
         localStorage.removeItem('introInput');
+
+        fetch('http://podbor-api/reviews/readTwo.php')
+            .then(response => response.json())
+            .then(json => {
+            this.reviews = json.data
+            
+        })
     }
 }
 </script>

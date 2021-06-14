@@ -18,10 +18,17 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import loginData from '@/Models/loginData';
+import { Store, storeKey, useStore } from 'vuex';
 
 @Options({
   components: {
   },
+  methods: {
+	  created() {
+		  console.log('store', this.$store.state.userData);
+		  
+	  }
+  }
 })
 export default class LoginForm extends Vue {
 	
@@ -49,11 +56,13 @@ export default class LoginForm extends Vue {
 			'Content-Type': 'application/json'
 			}
 		})
+
+
 		.then(response => response.json()) 
 		.then(json => {
 			this.user = json.data[0];			
 			console.log(this.user);
-			
+			this.$store.commit('SET_USER', this.user);
 		})
 
 		

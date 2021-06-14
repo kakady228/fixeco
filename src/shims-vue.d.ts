@@ -5,6 +5,7 @@ declare module '*.vue' {
   export default component
 }
 
+
 declare module 'vue-browser-geolocation';
 declare var google: any;
 declare var map: any;
