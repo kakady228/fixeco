@@ -47,7 +47,7 @@ export default class LoginForm extends Vue {
             password: this.password
         }];
 
-		const url = 'http://podbor-api/users/read.php';
+		const url = 'https://fixeco.tk/api/users/read.php';
 		const data = this.loginData;
 		const response = await fetch(url, {
 			method: 'POST', // или 'PUT'

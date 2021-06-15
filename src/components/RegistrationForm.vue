@@ -53,7 +53,7 @@ export default class RegistrationForm extends Vue {
 
 		if(this.password === this.confirmPassword) {
 
-			const url = 'http://podbor-api/users/create.php';
+			const url = 'https://fixeco.tk/api/users/create.php';
 			const data = this.registrationData;
 			const response = await fetch(url, {
 				method: 'POST', // или 'PUT'

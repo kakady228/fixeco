@@ -171,7 +171,7 @@ export default class Profile extends Vue {
                 phone: String(this.userPhone)
             }];
 
-            const url = 'http://podbor-api/users/update.php';
+            const url = 'https://fixeco.tk/api/users/update.php';
             const data = sendData1;
             const response = await fetch(url, {
                 method: 'POST',
@@ -197,7 +197,7 @@ export default class Profile extends Vue {
             map_lng: Number(lng)
         }];
 
-        const url = 'http://podbor-api/services/create.php';
+        const url = 'https://fixeco.tk/api/services/create.php';
         const data = sendData1;
         const response = await fetch(url, {
             method: 'POST',

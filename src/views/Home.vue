@@ -167,7 +167,7 @@ export default class Home extends Vue {
     created() {
         localStorage.removeItem('introInput');
 
-        fetch('http://podbor-api/reviews/readTwo.php')
+        fetch('https://fixeco.tk/api/reviews/readTwo.php')
             .then(response => response.json())
             .then(json => {
             this.reviews = json.data

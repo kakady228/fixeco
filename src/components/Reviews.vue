@@ -120,13 +120,13 @@ export default class Reviews extends Vue {
     reviewDate: any;
 
     created() {
-        fetch('http://podbor-api/reviews/read.php')
+        fetch('https://fixeco.tk/api/reviews/read.php')
             .then(response => response.json())
             .then(json => {
             this.reviews = json.data
             
         })
-        fetch('http://podbor-api/product/read.php')
+        fetch('https://fixeco.tk/api/product/read.php')
             .then(response => response.json())
             .then(json => {
             this.marks = json.data
@@ -153,7 +153,7 @@ export default class Reviews extends Vue {
             date: this.date
         }];
 
-        const url = 'http://podbor-api/reviews/create.php';
+        const url = 'https://fixeco.tk/api/reviews/create.php';
         const data = this.sendData1;
         const response = await fetch(url, {
             method: 'POST',
