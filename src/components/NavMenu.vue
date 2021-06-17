@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light shadow">
+    <nav class="navbar navbar-expand-md sticky-top navbar-light bg-light shadow">
         <div class="container-fluid d-flex">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <router-link to="/" class="navbar-brand rectangle-nav align-middle lh-sm" href="#"><img src="../assets/free-icon-cogwheel.png" alt="Logo" class="me-2">FixEco</router-link>
@@ -73,22 +73,8 @@ export default class NavMenu extends Vue {
       }
       
       
-    }, 5000);
+    }, 1000);
     
-  }
-
-  logout() {
-    let name = 'name';
-    let value = this.user.name;
-    let nameId = 'id';
-    let id = this.user.id;
-
-    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=-1";
-    document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=-1";
-
-    window.localStorage.setItem('userId', 'undefined');
-
-    window.location.reload();
   }
 
 }

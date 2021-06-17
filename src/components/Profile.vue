@@ -271,7 +271,7 @@ export default class Profile extends Vue {
     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=-1";
     document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=-1";
 
-    window.location.replace('http://localhost:8080/');
+    this.$router.push('https://fixeco.tk/'); 
   }
 
 }

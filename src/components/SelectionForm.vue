@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid py-5" style="background: rgba(249, 119, 47, 0.15) !important">
+<div class="container-fluid container-wrapper py-5" style="background: rgba(249, 119, 47, 0.15) !important">
     <div class="form-wrapper pt-1">
         <h1 class="text-start text-uppercase pink-header pt-0 mt-0">Заявка</h1>
 
@@ -377,6 +377,20 @@ export default class Selection extends Vue {
         color: rgba(249, 119, 47, 0.55);
         font-size: 96px;
         font-weight: 900;
+    }
+
+    @media (max-width: 320px) {
+        .pink-header {
+            display: none;
+        }
+        
+        .container-wrapper {
+            padding-top: 10px !important;
+        }
+
+        .form-wrapper {
+            width: 100%;
+        }
     }
 
 </style>

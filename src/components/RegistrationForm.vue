@@ -13,7 +13,7 @@
 				<input v-model="password" id="pass" class="reg-form-input" type="password" name="pass" placeholder="******">
 				<input v-model="confirmPassword" class="reg-form-input" type="password" name="confirmPassword" placeholder="******">
 
-				<select v-model="accountType" class="reg-form-input w-75 mx-auto">
+				<select v-model="accountType" class="reg-form-input col-md-8 mx-auto">
 					<option selected>Укажите тип учетной записи</option>
 					<option value="Client">Клиент</option>
 					<option value="AutoService">Автосервис</option>
@@ -149,6 +149,12 @@ export default class RegistrationForm extends Vue {
 
 .reg-form-button:hover {
 	background-color: rgba(0, 100, 0, 0.82);
+}
+
+@media (max-width: 420px) {
+	.reg-form {
+		width: 99%;
+	}
 }
 
 </style>

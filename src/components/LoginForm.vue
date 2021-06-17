@@ -78,7 +78,7 @@ export default class LoginForm extends Vue {
 			document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + "; path=/; max-age=" + UTCStringdate;
 			document.cookie = encodeURIComponent(nameId) + '=' + encodeURIComponent(id) + "; path=/; max-age=" + UTCStringdate;
 
-			this.$router.push('http://localhost:8080/');
+			this.$router.push('https://fixeco.tk/');
 		}
 
     }
@@ -161,4 +161,9 @@ export default class LoginForm extends Vue {
 	background-color: rgba(0, 100, 0, 0.82);
 }
 
+@media (max-width: 420px) {
+	.reg-form {
+		width: 99%;
+	}
+}
 </style>

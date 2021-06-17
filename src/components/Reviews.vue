@@ -1,7 +1,7 @@
 <template>
-    <div class="container ms-0 me-0">
+    <div class="container review-container ms-0 me-0">
         <div class="row col-12 py-2">
-            <form @submit.prevent class="col-2 px-4 reviews-filter text-start">
+            <form @submit.prevent class="col-sm-12 col-md-2 px-4 reviews-filter text-start">
                 <div class="mb-3">
                     <h5 class="form-label">Марка</h5>
                     <input type="search_mark" class="form-control" placeholder="Поиск по маркам...">
@@ -11,10 +11,10 @@
                     <label class="form-check-label">{{mark.name}}</label>
                 </div>
             </form>
-            <form @submit.prevent class="col-9 p-2 ms-5">
-                <div class="d-flex">
-                    <h1 class="text-start text-uppercase pink-header pt-0 mt-0">Отзывы</h1>
-                    <button class="btn btn-lg review-button mt-auto mb-4 me-0 ms-auto" data-bs-toggle="modal" data-bs-target="#reviewModal" id="reviewModalButton">Оставить отзыв</button>
+            <form @submit.prevent class="col-sm-12 col-md-9 p-2 ms-5">
+                <div class="d-flex flex-wrap">
+                    <h1 class="text-start text-uppercase pink-header pt-0 mt-0 col-sm-12 col-md-6">Отзывы</h1>
+                    <button class="btn btn-lg review-button mt-auto mb-4 me-0 ms-auto col-sm-12 col-md-3" data-bs-toggle="modal" data-bs-target="#reviewModal" id="reviewModalButton">Оставить отзыв</button>
                 </div>
 
                 <div :key="review.id" v-for="review in reviews" class="card review-item my-3 text-start">
@@ -210,5 +210,11 @@ export default class Reviews extends Vue {
         background-color: #f9772f !important;
         border: 1px #aaa solid;
         color: #fff;
+    }
+
+    @media (max-width: 320px) {
+        .container-wrapper {
+            width: 100% !important;
+        }
     }
 </style>

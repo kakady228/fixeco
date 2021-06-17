@@ -2,12 +2,12 @@
 
   <div class="container-fluid intro-image">
         <div class="row d-flex justify-content-center">
-            <div class="col-7 position-absolute top-50 start-50 translate-middle text-white text-center">
+            <div class="col-sm-12 col-md-7 position-absolute translate-middle text-white text-center intro">
                 <h3 class="col-12 font-32">Десятки автосервисов по всему городу</h3>
                 <h1 class="col-12 text-uppercase font-58">Найдите лучший сервис</h1>
                 <div class="input-group mb-3 h-55px mt-3">
                     <input v-model="introInput" type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
+                    <router-link to="selection-form" class="btn btn-secondary col-sm-4 col-md-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
                 </div>
                 <button class="col-3 btn call-me__btn mt-3">Перезвоните мне</button>
             </div>
@@ -112,7 +112,7 @@
 
             <div class="reviews d-flex flex-wrap col-12 justify-content-center">
 
-                <div class="card w-25 mx-2" :key="review.i" v-for="review in reviews">
+                <div class="card review-card w-25 mx-2" :key="review.i" v-for="review in reviews">
                     <div class="card-body">
                       <h5 class="card-title">Автосервис: {{ review.service_name }}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Стоимость ремонта: {{ review.cost }}</h6>
@@ -134,13 +134,13 @@
 
 
     <div class="container-fluid application-image position-relative">
-        <div class="row col-9 d-flex position-absolute top-50 start-50 translate-middle">
+        <div class="row col-sm-12 col-md-9 d-flex position-absolute application-absolute translate-middle">
             <div class="text-white text-center">
                 <h3 class="col-12 font-42 text-uppercase">Оставьте заявку и сэкономьте на ремонте</h3>
                 <h1 class="col-12 font-24 text-uppercase font-60">Создание заявки абсолютно бесплатно и займет у вас не более 5 минут</h1>
                 <div class="input-group mb-3 h-55px mt-5">
                     <input v-model="introInput" type="text" class="form-control" placeholder="Напишите что нужно починить..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <router-link to="selection-form" class="btn btn-secondary col-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
+                    <router-link to="selection-form" class="btn btn-secondary col-sm-5 col-md-3 lh-55px" type="button" id="button-addon2" @click="sendIntroInput">Создать заявку</router-link>
                 </div>
             </div>
             
@@ -305,6 +305,58 @@ export default class Home extends Vue {
 
     .lh-55px {
         line-height: 40px;
+    }
+
+    .intro {
+        top: 50%;
+        left: 50%;
+    }
+
+    .application-absolute {
+        top: 50%;
+        left: 50%;
+    }
+
+    @media (max-width: 320px) {
+        .intro {
+            top: 40%;
+        }
+
+        .call-me__btn {
+            margin-top: 2rem !important;
+            width: 60%;
+        }
+
+        .how-works {
+            width: 100% !important;
+        }
+        
+        .hw-left {
+            display: none;
+        }
+        .hw-right {
+            width: 100%;
+        }
+        .wu-left {
+            display: none;
+        }
+        .wu-right {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .review-card {
+            width: 100% !important;
+            margin: .7rem auto;
+        }
+
+        .application-image {
+            height: 80vh;
+        }
+
+        .application-absolute {
+            left: 53vw;
+        }
     }
 
 </style>
